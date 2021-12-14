@@ -5,8 +5,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="msapplication-TileColor" content="#555">
-  <meta name="msapplication-TileImage" content="/images">
 
   {% block seo %}
     <meta name="robots" content="noarchive">
@@ -14,11 +12,11 @@
 
   <meta name="navId" content="{{content.id}}">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <link rel="manifest" href="/assets/site.webmanifest">
-  <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#555">
 
@@ -29,9 +27,13 @@
   <style>
     /* CSS RESET */
     html, body {
-      height: 100%;
       padding: 0;
       margin: 0;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* LAYOUT */
@@ -58,8 +60,8 @@
       margin: 0 -10px 0 -10px;
       padding-top: 0;
       text-align: center;
-      border-bottom: solid 3px mediumseagreen;
-      background: #02a546;
+      border-bottom: solid 3px #6d721c;
+      background: #6b5b95;
     }
 
     #header--main h1 {
@@ -69,7 +71,7 @@
     }
 
     .category {
-      color: mediumseagreen;
+      color: #6d721c;
       text-decoration: none;
       text-transform: uppercase;
       padding: 5px;
@@ -94,7 +96,7 @@
       padding: 10px;
       text-align: center;
       background-color: #f2f2f2;
-      border-top: solid 3px mediumseagreen;
+      border-top: solid 3px #6b5b95;
       color: #999;
       font-size: 10px;
     }
@@ -108,7 +110,7 @@
 
     #reader-view-article h2,
     #reader-view-article a {
-      color: mediumseagreen;
+      color: #6b5b95;
     }
 
     #reader-view-article * {
@@ -123,11 +125,14 @@
     /*----Sidebar ----*/
     .teaser-list {
       width: 28%;
-      min-width: 200px;
+      min-width: 260px;
+      height: calc(100vh - 100px);
       float: left;
-      height: 100vh;
+      margin-top: 10px;
       overflow-y: scroll;
       background-color: white;
+      border-top: solid 1px #ccc;
+      border-bottom: solid 1px #6b5b95;
     }
 
     .teaser-list .teaser:not(.teaser--last) {
@@ -149,7 +154,7 @@
     }
 
     .teaser.active .teaser__title {
-      color: mediumseagreen;
+      color: #6d721c;
     }
 
     .teaser:hover {
@@ -171,7 +176,7 @@
 
     a.teaser__source {
       font-size: 10px;
-      color: mediumseagreen;
+      color: #6d721c;
     }
 
     .teaser__image {
