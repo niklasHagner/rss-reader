@@ -1,0 +1,25 @@
+{% extends "./layouts/base.njk" %}
+
+{% block title %}
+  404
+{% endblock %}
+
+{% block seo %}
+  <meta name="robots" content="noindex, nofollow, noarchive">
+{% endblock %}
+
+{% block head %}
+
+  <style>
+    body {
+      font-size: 50px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <main class="error-page">
+    <img src="/images/page_not_found_icon.gif">
+    <h1>404</h1>
+  </main>
+{% endblock %}

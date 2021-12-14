@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <title>{% block title %}RSS{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msapplication-TileColor" content="#555">
+  <meta name="msapplication-TileImage" content="/images">
+
+  {% block seo %}
+    <meta name="robots" content="noarchive">
+  {% endblock %}
+
+  <meta name="navId" content="{{content.id}}">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#555">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS RESET */
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* LAYOUT */
+    body * {
+      box-sizing: border-box;
+      font-family: 'Readex Pro', sans-serif;
+    }
+
+    .site-body {
+      padding: 0 10px 0 10px;
+    }
+
+    main {
+      margin-top: 0;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      flex-flow: wrap;
+    }
+
+    #header--main {
+      margin: 0 -10px 0 -10px;
+      padding-top: 0;
+      text-align: center;
+      border-bottom: solid 3px mediumseagreen;
+      background: #02a546;
+    }
+
+    #header--main h1 {
+      margin: 0;
+      text-shadow: 2px 3px 0px rgb(0 0 0 / 20%);
+      color: #eee;
+    }
+
+    .category {
+      color: mediumseagreen;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 5px;
+      display: inline-block;
+    }
+
+    .pagination {
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: solid 1px #ccc;
+    }
+    .pagination--single {
+      justify-content: space-around;
+    }
+
+    .site-footer {
+      width: 100%;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      padding: 10px;
+      text-align: center;
+      background-color: #f2f2f2;
+      border-top: solid 3px mediumseagreen;
+      color: #999;
+      font-size: 10px;
+    }
+
+    /* Reader view */
+    #reader-view {
+      height: 100vh;
+      overflow-y: scroll;
+      padding: 0 10px;
+    }
+
+    #reader-view-article h2,
+    #reader-view-article a {
+      color: mediumseagreen;
+    }
+
+    #reader-view-article * {
+      max-width: 100%;
+    }
+
+    #reader-view-article code {
+      font-family: monospace;
+      overflow-x: scroll;
+    }
+
+    /*----Sidebar ----*/
+    .teaser-list {
+      width: 28%;
+      min-width: 200px;
+      float: left;
+      height: 100vh;
+      overflow-y: scroll;
+      background-color: white;
+    }
+
+    .teaser-list .teaser:not(.teaser--last) {
+      margin: 0 0 7px 0;
+      padding: 0 10px 10px 10px;
+      box-shadow: none;
+      border-bottom: solid 1px #ccc;
+    }
+
+    .teaser {
+      flex: 0 0 100%;
+      padding: 10px;
+      color: #555;
+    }
+    .teaser__title {
+      color: #222;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .teaser.active .teaser__title {
+      color: mediumseagreen;
+    }
+
+    .teaser:hover {
+      cursor: pointer;
+    }
+
+    .teaser__author {
+      font-size: 12px;
+    }
+
+    .teaser:hover .teaser__title {
+      color: green;
+    }
+
+    .teaser__published {
+      font-size: 10px;
+      color: #888;
+    }
+
+    a.teaser__source {
+      font-size: 10px;
+      color: mediumseagreen;
+    }
+
+    .teaser__image {
+      max-width: 100px;
+      margin-right: 10px;
+    }
+
+    .teaser img {
+      max-width: 95px;
+    }
+  </style>
+  <script>
+
+    function setupEvents() {
+      const readerView = document.querySelector("#reader-view-article");
+      const teasers = Array.from(document.querySelectorAll(".teaser"));
+      teasers.forEach(function(teaser) {
+        teaser.addEventListener("click", function(e) {
+          e.preventDefault();
+
+          teasers.forEach((x) => x.classList.remove("active"))
+          ;
+          const teaser = e.target.closest(".teaser");
+          teaser.classList.add("active");
+          const title = decodeURIComponent(teaser.getAttribute("data-title"));
+          const description = decodeURIComponent(teaser.getAttribute("data-description"));
+          const author = decodeURIComponent(teaser.getAttribute("data-author"));
+          const link = decodeURIComponent(teaser.getAttribute("data-link"));
+
+          readerView.innerHTML = `
+            <article>
+              <h1>${title}</h1>
+              ${ (link && author) ? `<p className="article__meta"><a target="_blank" href="${link}">Link</a> <span style="font-size: 0.8em">by ${author}</span></p>` : '' }
+              <section classname="article__description">${description}</section>
+            </article>
+          `;
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', (event) => {
+      setupEvents();
+    })
+  </script>
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="site-body">
+      {% block body %}{% endblock %}
+    </div>
+    {% include "partials/siteFooter.njk" %}
+  </div>
+</body>
+</html>

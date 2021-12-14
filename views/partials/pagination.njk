@@ -1,0 +1,16 @@
+{% set pagination = getPagination(page) %}
+<div class="pagination {{ 'pagination--single' if not pagination.showNext or not pagination.showPrev }}">
+  {% if pagination.showPrev %}
+    <a href="{{content.url}}?page={{pagination.prevPage}}" class="pagination__prev">
+      👈 Prev page
+    </a>
+  {% endif %}
+  {% if pagination.showNext and pagination.showPrev %}
+    <span class="pagination__page-number">Page {{pagination.pageNumber}}</span>
+  {% endif %}
+  {% if pagination.showNext %}
+    <a href="{{content.url}}?page={{pagination.nextPage}}" class="pagination__next">
+      Next page 👉
+    </a>
+  {% endif %}
+</div>

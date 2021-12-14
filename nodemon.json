@@ -1,0 +1,5 @@
+{
+  "ignore": ["public/*"],
+  "ext": "js json njk",
+  "watch": ["*", ".env"]
+}

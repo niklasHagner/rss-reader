@@ -1,0 +1,14 @@
+<article class="teaser {% if isActive %}active{% endif %}"
+    data-href="{{ teaser.link }}"
+    data-title="{{ teaser.title | urlencode }}"
+    data-category="{{ teaser.category | urlencode }}"
+    data-description="{{ teaser.description | urlencode }}"
+    data-author="{{ teaser.feedInfo.author | urlencode }}"
+    data-link="{{ teaser.link | urlencode }}"
+>
+  <h2 class="teaser__title">
+    {{ teaser.title | safe }}
+  </h2>
+  <p class="teaser__published">{{ teaser.pubDate | dateFormat }}</p>
+  <p class="teaser__author">{{ teaser.feedInfo.author | safe  }}</p>
+</article>

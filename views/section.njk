@@ -1,0 +1,32 @@
+{% extends "./layouts/default.njk" %}
+{% block content %}
+  <header id="header--main">
+    <h1>RSS Reader</h1>
+    {# <section class="categories">
+      {% include "partials/categories.njk" %}
+    </section> #}
+  </header>
+
+  <section class="teaser-list">
+    {% for teaser in content.items %}
+      {% set isActive = loop.first %}
+      {% include "partials/teaser.njk" %}
+    {% endfor %}
+  </section>
+
+  {% set activeArticle = content.items[0] %}
+  <div id="reader-view">
+    <article id="reader-view-article">
+      <h2>{{- activeArticle.title -}}</h2>
+      {% if article.link %}
+        <p className="article__meta">
+          <a target="_blank" href="{{article.link | urlencode}}">Source {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}{% endif %}</span></a>
+        </p>
+      {% endif %}
+      <section className="article__description">
+        <p>{{ activeArticle.description | safe }}</p>
+      </section>
+    </article>
+  </div>
+{% endblock %}
+
