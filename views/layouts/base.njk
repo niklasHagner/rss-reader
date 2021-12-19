@@ -62,26 +62,6 @@
       background: #6b5b95;
     }
 
-    @media only screen and (max-width: 600px) {
-      body {
-        font-size: 12px;
-      }
-
-      .sidebar {
-        width: 30%;
-        border-right: solid 2px #6b5b95;
-      }
-
-      .teaser__title,
-      #reader-view h2 {
-        font-size: 12px;
-      }
-
-      #reader-view h1 {
-        font-size: 14px;
-      }
-    }
-
     #header--main h1 {
       margin: 0;
       text-shadow: 2px 3px 0px rgb(0 0 0 / 20%);
@@ -156,6 +136,10 @@
       max-width: 100%;
     }
 
+    #reader-view-article img {
+      max-height: auto !important; //override silly inline styles
+    }
+
     #reader-view-article code {
       font-family: monospace;
       overflow-x: scroll;
@@ -228,6 +212,35 @@
 
     .teaser img {
       max-width: 95px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      body {
+        font-size: 12px;
+      }
+
+      .sidebar {
+        width: 30%;
+        min-width: 150px;
+        border-right: solid 2px #6b5b95;
+      }
+
+      .sidebar .teaser__title,
+      .sidebar .teaser__author,
+      #reader-view h2 {
+        font-size: 11px;
+        letter-spacing: -0.5px;
+      }
+
+      #reader-view h1 {
+        font-size: 14px;
+      }
+
+      .teaser p,
+      .teaser .teaser__title {
+        margin-top: 2px;
+        margin-bottom: 2px;
+      }
     }
   </style>
 
