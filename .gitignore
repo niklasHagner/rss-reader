@@ -1,6 +1,7 @@
 # Dependency directory and npm log
 node_modules
 npm-debug.log
+*.log
 
 # Code coverage results
 /coverage
@@ -9,15 +10,7 @@ npm-debug.log
 /*.tgz
 
 # Project files
-.tern-port
-.tern-project
-.idea
-*.iml
 .vscode
-*.sln
-
-# Compiled client resources
-/public
 
 # Cache
 .eslintcache
