@@ -9,6 +9,6 @@
   <h2 class="teaser__title">
     {{ teaser.title | safe }}
   </h2>
-  <p class="teaser__published">{{ teaser.pubDate | dateFormat }}</p>
+  <p class="teaser__published">{{ teaser.date | dateFormat }}</p>
   <p class="teaser__author">{{ teaser.feedInfo.author | safe  }}</p>
 </article>
