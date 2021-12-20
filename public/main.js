@@ -5,9 +5,31 @@
 
 
 function domReady() {
-  const teaserListEl = document.querySelector(".teaser-list");
+  const readerView = document.querySelector("#reader-view-article");
   const buttons = Array.from(document.querySelectorAll(".sidebar header button"));
   buttons.forEach(x => x.addEventListener("click", (e) => { sortFeeds(e); } ));
+  const teaserListEl = document.querySelector(".teaser-list");
+  const teasers = Array.from(document.querySelectorAll(".teaser"));
+  teasers.forEach((teaser) => { teaser.addEventListener("click", onClickTeaser) });
+
+  function onClickTeaser(e) {
+    e.preventDefault();
+    teasers.forEach((x) => x.classList.remove("active"));
+    const teaser = e.target.closest(".teaser");
+    teaser.classList.add("active");
+    const title = decodeURIComponent(teaser.getAttribute("data-title"));
+    const description = decodeURIComponent(teaser.getAttribute("data-description"));
+    const author = decodeURIComponent(teaser.getAttribute("data-author"));
+    const link = decodeURIComponent(teaser.getAttribute("data-link"));
+
+    readerView.innerHTML = `
+      <article>
+        <h1>${title}</h1>
+        ${ (link && author) ? `<p className="article__meta"><a target="_blank" href="${link}">Link</a> <span style="font-size: 0.8em">by ${author}</span></p>` : '' }
+        <section classname="article__description">${description}</section>
+      </article>
+    `;
+  }
 
   function sortFeeds(e) {
     buttons.forEach(x => x.classList.remove("active"));

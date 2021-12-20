@@ -244,38 +244,6 @@
     }
   </style>
 
-  <script>
-    function setupEvents() {
-      const readerView = document.querySelector("#reader-view-article");
-      const teasers = Array.from(document.querySelectorAll(".teaser"));
-      teasers.forEach(function(teaser) {
-        teaser.addEventListener("click", function(e) {
-          e.preventDefault();
-
-          teasers.forEach((x) => x.classList.remove("active"))
-          ;
-          const teaser = e.target.closest(".teaser");
-          teaser.classList.add("active");
-          const title = decodeURIComponent(teaser.getAttribute("data-title"));
-          const description = decodeURIComponent(teaser.getAttribute("data-description"));
-          const author = decodeURIComponent(teaser.getAttribute("data-author"));
-          const link = decodeURIComponent(teaser.getAttribute("data-link"));
-
-          readerView.innerHTML = `
-            <article>
-              <h1>${title}</h1>
-              ${ (link && author) ? `<p className="article__meta"><a target="_blank" href="${link}">Link</a> <span style="font-size: 0.8em">by ${author}</span></p>` : '' }
-              <section classname="article__description">${description}</section>
-            </article>
-          `;
-        });
-      });
-    }
-    document.addEventListener('DOMContentLoaded', (event) => {
-      setupEvents();
-    })
-  </script>
-
   <script src="./main.js"></script>
 
   {% block head %}{% endblock %}
