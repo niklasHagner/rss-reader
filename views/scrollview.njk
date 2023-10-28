@@ -1,7 +1,17 @@
 {% extends "./layouts/default.njk" %}
+
+{% block bodyClasses %}
+  body--fixed
+{% endblock %}
+
+{% block footerClasses %}
+  footer--fixed
+{% endblock %}
+
 {% block content %}
   <header id="header--main">
     <h1>RSS Reader</h1>
+    <a href="/grid">Gridview</a>
     {# <section class="categories">
       {% include "partials/categories.njk" %}
     </section> #}
@@ -28,11 +38,11 @@
     <article id="reader-view-article">
       <h2>{{- activeArticle.title -}}</h2>
       {% if article.link %}
-        <p className="article__meta">
-          <a target="_blank" href="{{article.link | urlencode}}">Source {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}{% endif %}</span></a>
+        <p class="article__meta">
+          <a target="_blank" href="{{article.link}}">Source {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}{% endif %}</span></a>
         </p>
       {% endif %}
-      <section className="article__description">
+      <section class="article__description">
         <p>{{ activeArticle.description | safe }}</p>
       </section>
     </article>

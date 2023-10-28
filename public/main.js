@@ -6,6 +6,16 @@
 
 function domReady() {
   const readerView = document.querySelector("#reader-view-article");
+  if (readerView) {
+    setUpReaderView(readerView);
+  }
+}
+
+function setUpReaderView() {
+  const readerView = document.querySelector("#reader-view-article");
+  if (!readerView) {
+    return
+  }
   const buttons = Array.from(document.querySelectorAll(".sidebar header button"));
   buttons.forEach(x => x.addEventListener("click", (e) => { sortFeeds(e); } ));
   const teaserListEl = document.querySelector(".teaser-list");
@@ -25,8 +35,8 @@ function domReady() {
     readerView.innerHTML = `
       <article>
         <h1>${title}</h1>
-        ${ (link && author) ? `<p className="article__meta"><a target="_blank" href="${link}">Link</a> <span style="font-size: 0.8em">by ${author}</span></p>` : '' }
-        <section classname="article__description">${description}</section>
+        ${ (link && author) ? `<p class="article__meta"><a target="_blank" href="${link}">Link</a> <span style="font-size: 0.8em">by ${author}</span></p>` : '' }
+        <section class="article__description">${description}</section>
       </article>
     `;
   }

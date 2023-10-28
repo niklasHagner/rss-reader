@@ -1,0 +1,37 @@
+{% extends "./layouts/default.njk" %}
+{% block content %}
+  <header id="header--main">
+    <h1>RSS Grid</h1>
+    <a href="/">Scrollview</a>
+  </header>
+
+  <div class="grid">
+    {% for article in content.items %}
+      <article class="grid-item">
+        <h2>{{- article.title -}}</h2>
+        {% if article.link %}
+          <a class="source-link" target="_blank" href="{{article.link}}">Source {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}{% endif %}</span></a>
+        {% endif %}
+        <section class="article__description">
+          <p>{{ article.description | safe }}</p>
+        </section>
+      </article>
+    {% endfor %}
+  </div>
+
+  <script>
+    (function () {
+      const elementsWithStyle = Array.from(document.querySelectorAll(".article__description *[style]"));
+      console.log("elementsWithStyle", elementsWithStyle.length);
+      elementsWithStyle.forEach((element) => {
+        element.style = "";
+      });
+
+      const iframes = Array.from(document.querySelectorAll(".article__description iframe"));
+      console.log("iframes", iframes.length);
+
+    })();
+  </script>
+
+{% endblock %}
+
