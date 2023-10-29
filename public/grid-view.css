@@ -2,6 +2,8 @@
   /* display: grid;
   grid-template-columns: repeat(4, minmax(100px, 1fr));
   gap: 10px; */
+  column-count: 2;
+
 
   transition: all .5s ease-in-out;
   column-gap: 30px;
@@ -14,6 +16,18 @@
   .grid {
     column-count: 3;
   }
+  .grid-item {
+    max-width: calc(33vw - 10px);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .grid {
+    column-count: 4;
+  }
+  .grid-item {
+    max-width: calc(25vw - 10px);
+  }
 }
 
 .grid-item {
@@ -23,11 +37,11 @@
   box-shadow: 0px 0px 5px gray;
 
   /* css column related */
-  margin: 0 10px 30px 10px;
+  margin: 0 10px 20px 10px;
   display: inline-block;
   vertical-align: top;
   width: 100%;
-  max-width: calc(33vw - 10px);
+  max-width: calc(50vw - 10px);
   overflow-wrap: break-word;
   overflow-x: hidden;
 }
@@ -51,4 +65,9 @@
     text-decoration: underline;
     box-shadow: 0px 0px 3px gray;
   }
+}
+
+.article__img {
+  width: calc(100% + 40px);
+  margin: -20px -20px 0 -20px;
 }
