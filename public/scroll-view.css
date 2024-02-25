@@ -59,13 +59,15 @@
 }
 
 .sidebar > header {
-  margin: 5px 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
   border-bottom: solid 3px #6b5b95;
 }
 
 .teaser-list .teaser:not(.teaser--last) {
-  margin: 0 0 7px 0;
-  padding: 0 10px 10px 10px;
+  margin: 0;
+  padding-bottom: 10px;
   box-shadow: none;
   border-bottom: solid 1px #ccc;
 }
@@ -75,6 +77,9 @@
   padding: 10px;
   color: #555;
   word-break: break-word;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .teaser__title {
@@ -83,8 +88,12 @@
   font-size: 16px;
 }
 
-.teaser.active .teaser__title {
-  color: #6b5b95;
+.teaser.active {
+  background-color: #c4b7e86e;
+
+  .teaser__title {
+    color: #6b5b95;
+  }
 }
 
 .teaser:hover {
