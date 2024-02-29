@@ -13,6 +13,8 @@ function domReady() {
 
 function setUpReaderView() {
   const readerView = document.querySelector("#reader-view-article");
+  const readerViewScrollContainer = document.querySelector("#reader-view");
+
   if (!readerView) {
     return
   }
@@ -31,6 +33,10 @@ function setUpReaderView() {
     const description = decodeURIComponent(teaser.getAttribute("data-description"));
     const author = decodeURIComponent(teaser.getAttribute("data-author"));
     const link = decodeURIComponent(teaser.getAttribute("data-link"));
+
+    if(readerViewScrollContainer) {
+      readerViewScrollContainer.scrollTop = 0;
+    }
 
     readerView.innerHTML = `
       <article>
