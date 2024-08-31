@@ -9,12 +9,10 @@
     {% for article in content.items %}
       <article class="grid-item">
         {% if article.imgUrl %}
-          <img class="article__img" src="{{ article.imgUrl }}" alt="" />
+          {# Use aspect-ratio to prevent jumpy layout shifting during image loading #}
+          <img class="article__img" src="{{ article.imgUrl }}" alt="" style="aspect-ratio: 16/9;" />
         {% endif %}
         <h2>{{- article.title -}}</h2>
-        {% if article.link %}
-          <a class="source-link" target="_blank" href="{{article.link}}">Source {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}{% endif %}</span></a>
-        {% endif %}
         <section class="article__description">
           <p>{{ article.description | safe }}</p>
         </section>
