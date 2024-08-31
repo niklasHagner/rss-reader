@@ -44,12 +44,33 @@
   max-width: calc(50vw - 10px);
   overflow-wrap: break-word;
   overflow-x: hidden;
+  position: relative;
 }
 
-.article__description img,
-.article__description iframe {
-  max-width: 100%;
-  height: auto;
+.article__description {
+  height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  img,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.read-it-on {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8);
+  }
 }
 
 .source-link {
