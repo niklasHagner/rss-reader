@@ -51,6 +51,17 @@
   height: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, transparent, white);
+  }
 
   img,
   iframe {
@@ -62,8 +73,8 @@
 .read-it-on {
   background-color: white;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 2px;
+  right: 2px;
 
   &::before {
     content: "";
