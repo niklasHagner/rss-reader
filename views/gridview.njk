@@ -16,6 +16,12 @@
         <section class="article__description">
           <p>{{ article.description | safe }}</p>
         </section>
+        <div class="read-it-on">
+          {% if article.link %}
+            <a class="source-link" target="_blank" href="{{article.link}}">Read it on {{article.link | getDomainFromUrl}}</a>
+          {% endif %}
+          {# {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}</span>{% endif %} #}
+        </div>
       </article>
     {% endfor %}
   </div>
