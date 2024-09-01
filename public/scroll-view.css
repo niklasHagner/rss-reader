@@ -39,7 +39,9 @@
 }
 
 #reader-view-article img {
-  max-height: auto !important; //override silly inline styles
+   /* Many imgs have height and width attributes. Override em */
+  max-height: auto !important;
+  height: auto;
 }
 
 #reader-view-article code {
