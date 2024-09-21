@@ -2,6 +2,8 @@
 
 {% block head %}
   <link rel="stylesheet" href="grid-view.css">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic|PT+Serif:ital,wght@0,400;0,700;1,400;1,700' rel='stylesheet' type='text/css'>
+
 {% endblock %}
 
 {% block content %}
@@ -17,16 +19,40 @@
           {# Use aspect-ratio to prevent jumpy layout shifting during image loading #}
           <img class="article__img" src="{{ article.imgUrl }}" alt="" style="aspect-ratio: 16/9;" />
         {% endif %}
-        <h2>{{- article.title -}}</h2>
-        <section class="article__description">
-          <p>{{ article.description | safe }}</p>
-        </section>
+
+        {% if loop.index0 % 10 == 0 %}
+          {% set headlineClass = "hl1" %}
+        {% elif loop.index0 % 9  == 0 %}
+          {% set headlineClass = "hl2" %}
+        {% elif loop.index0 % 8  == 0 %}
+          {% set headlineClass = "hl3" %}
+        {% elif loop.index0 % 7 == 0 %}
+          {% set headlineClass = "hl1" %}
+        {% elif loop.index0 % 6 == 0 %}
+          {% set headlineClass = "hl5" %}
+        {% elif loop.index0 % 5 == 0 %}
+          {% set headlineClass = "hl6" %}
+        {% elif loop.index0 % 4 == 0 %}
+          {% set headlineClass = "hl7" %}
+        {% elif loop.index0 % 3 == 0 %}
+          {% set headlineClass = "hl8" %}
+        {% elif loop.index0 % 2 == 0 %}
+          {% set headlineClass = "hl9" %}
+        {% else %}
+          {% set headlineClass = "hl0" %}
+        {% endif %}
+
+        <h2 class="headline {{headlineClass}}">{{- article.title -}}</h2>
         <div class="read-it-on">
           {% if article.link %}
-            <a class="source-link" target="_blank" href="{{article.link}}">Read it on {{article.link | getDomainFromUrl}}</a>
+            <a class="source-link headline hl4" target="_blank" href="{{article.link}}">Read it on {{article.link | getDomainFromUrl}}</a>
+            <button class="expand">EXPAND</button>
           {% endif %}
           {# {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}</span>{% endif %} #}
         </div>
+        <section class="article__description">
+          <p>{{ article.description | safe }}</p>
+        </section>
       </article>
     {% endfor %}
   </div>

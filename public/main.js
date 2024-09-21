@@ -8,7 +8,22 @@ function domReady() {
   const readerView = document.querySelector("#reader-view-article");
   if (readerView) {
     setUpReaderView(readerView);
+  } else {
+    setupGridView();
   }
+}
+
+function setupGridView() {
+  const buttons = Array.from(document.querySelectorAll(".expand"));
+  buttons.forEach(x => x.addEventListener("click", (e) => {
+    if (e.target.innerText === "EXPAND") {
+      e.target.innerText = "COLLAPSE";
+    } else {
+      e.target.innerText = "EXPAND";
+    }
+    const article = e.target.closest(".grid-item");
+    article.classList.toggle("grid-item--expanded");
+   } ));
 }
 
 function setUpReaderView() {
