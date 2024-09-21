@@ -48,13 +48,13 @@
         <div class="read-it-on">
           {% if article.link %}
             <a class="source-link headline hl4" target="_blank" href="{{article.link}}">Read it on {{article.link | getDomainFromUrl}}</a>
-            <button class="button--square expand">EXPAND</button>
           {% endif %}
           {# {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}</span>{% endif %} #}
         </div>
         <section class="article__description">
           <p>{{ article.description | safe }}</p>
         </section>
+        <button class="button--square expand">EXPAND</button>
       </article>
     {% endfor %}
   </div>

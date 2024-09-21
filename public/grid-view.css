@@ -83,6 +83,9 @@ body {
 
   .expand {
     display: none;
+    position: absolute;
+    bottom: 1px;
+    left: 15px;
   }
 
   &:hover {
@@ -131,7 +134,8 @@ body {
   padding: 10px;
 
   &:hover {
-    color: rgb(102, 72, 27);
+    color:563b9f;
+    text-decoration: underline;
   }
 }
 
@@ -264,7 +268,7 @@ body {
 
 .headline.hl9 {
   font-weight: 400;
-  font-size: 42px;
+  font-size: 38px;
   font-style: italic;
   box-sizing: border-box;
   padding: 10px 0 10px 0;
