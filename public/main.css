@@ -54,15 +54,22 @@ button {
   font-size: 14px;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: #563b9f;
+  }
+
+  &.active {
+    background-color: #8462df;
+  }
+
+  &.button--square {
+    border-radius: 0;
+  }
 }
 
-button.active {
-  background-color: #8462df;
-}
 
-button:hover {
-  background-color: #563b9f;
-}
+
 
 .article__description {
   pre,
