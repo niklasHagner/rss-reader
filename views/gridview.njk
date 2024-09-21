@@ -14,6 +14,8 @@
 
   <div class="grid">
     {% for article in content.items %}
+      {% set isAllCaps = article.title | isAllCaps %}
+
       <article class="grid-item">
         {% if article.imgUrl %}
           {# Use aspect-ratio to prevent jumpy layout shifting during image loading #}
@@ -36,7 +38,7 @@
           {% set headlineClass = "hl7" %}
         {% elif loop.index0 % 3 == 0 %}
           {% set headlineClass = "hl8" %}
-        {% elif loop.index0 % 2 == 0 %}
+        {% elif loop.index0 % 2 == 0 and not isAllCaps %}
           {% set headlineClass = "hl9" %}
         {% else %}
           {% set headlineClass = "hl0" %}
