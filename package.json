@@ -24,6 +24,7 @@
     "exp-config": "^4.2.1",
     "exp-fetch": "^5.4.2",
     "express": "^4.18.2",
+    "html-entities": "^2.5.2",
     "log": "^6.3.1",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
