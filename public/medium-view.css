@@ -37,22 +37,17 @@ body {
 .grid {
   transition: all .5s ease-in-out;
   padding: 10px;
-  background-color: #f2f2f2;
   max-width: 760px;
   margin: 0 auto;
 }
 
 .grid-item {
   padding: 20px;
-  /* border-left: solid 1px #2f2f2f; */
-  border-bottom: solid 1px #848282;
+  border-bottom: solid 1px #cfcaca;
 
-  /* css column related */
-  /* margin: 0 10px 20px 10px; */
   display: inline-block;
   vertical-align: top;
   width: 100%;
-  /* max-width: calc(50vw - 10px); */
   overflow-wrap: break-word;
   overflow-x: hidden;
   position: relative;
@@ -100,20 +95,20 @@ body {
 
 .read-it-on {
   width: 100%;
-  text-align: center;
   font-size: 12px;
-  padding: 10px 0 10px 0;
+  padding: 10px 0;
   padding: 10px;
+  font-family: sans-serif;
+  font-size: 0.8em;
 }
 
 .source-link {
   display: inline-block;
   text-decoration: none;
   color: #2f2f2f;
-  font-weight: 700;
 
   &:hover {
-    color:563b9f;
+    color: #563b9f;
     text-decoration: underline;
   }
 }

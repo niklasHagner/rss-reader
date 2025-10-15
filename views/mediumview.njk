@@ -41,10 +41,10 @@
           {% set headlineClass = "hl0" %}
         {% endif %}
 
-        <div class="read-it-on border-before-and-after">
+        <div class="read-it-on">
           {% if article.link %}
-          {% if article.author %} <span style="font-size: 0.8em"><em>by</em> {{article.author | safe}}&nbsp;</span>{% endif %}
-            for <a class="source-link" target="_blank" href="{{article.link}}">{{article.link | getDomainFromUrl}}</a>
+          {% if article.author %} <span class="read-it-on__author"><em>by</em> {{article.author | safe}}&nbsp;</span>{% endif %}
+            <em>for</em> <a class="source-link" target="_blank" href="{{article.link}}">{{article.link | getDomainFromUrl}}</a>
           {% endif %}
         </div>
 
